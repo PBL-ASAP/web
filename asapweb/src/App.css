@@ -1,0 +1,121 @@
+/* 전체 레이아웃 및 공통 스타일 */
+.app {
+  display: flex;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  height: 100vh;
+}
+
+.logo {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #e8e8e8; /* 밝은 회색으로 변경 */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* 그림자 추가 */
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  padding: 20px 0;
+  cursor: pointer;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 2px solid #ddd; /* 선 두께 증가 */
+  text-align: center; /* 중앙 정렬로 변경 */
+  font-weight: bold; /* 글꼴 두껍게 */
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item:hover {
+  background-color: #ccc; /* 배경색 변경 */
+  color: #000; /* 텍스트 색상 변경 */
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.search {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.search input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px; /* 버튼 둥글게 */
+}
+
+.button, .button.primary {
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 20px; /* 버튼 둥글게 */
+  transition: all 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+.button:hover, .button.primary:hover {
+  transform: scale(1.05); /* 버튼을 클릭할 때 확대 효과 */
+}
+
+.button.primary {
+  background-color: #ffcc00;
+  color: white;
+  border: none;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.video-thumbnail {
+  background-color: #eee;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+/* 업로드 페이지 스타일 */
+.upload-area {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.drag-drop {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #666;
+}
