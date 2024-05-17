@@ -1,10 +1,10 @@
 import React from 'react';
 import './Home.css';
 
-function Home({ videoFiles = [] }) { // videoFiles가 undefined일 경우 빈 배열을 기본값으로 설정
+function Home({ videoFiles }) {
   return (
     <div className="home-container">
-      <h1>Home</h1>
+      <h1>ASAP Home</h1>
       <div className="video-preview-container">
         {videoFiles.length > 0 ? (
           videoFiles.map((file, index) => (
