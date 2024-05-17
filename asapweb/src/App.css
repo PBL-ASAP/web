@@ -6,21 +6,32 @@
   height: 100vh;
 }
 
-.logo {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 20px;
-}
-
 .sidebar {
   width: 200px;
-  background-color: #e8e8e8; /* 밝은 회색으로 변경 */
+  background-color: #f0f0f0; /* 배경은 연한 회색 */
   padding: 20px;
   display: flex;
   flex-direction: column;
   height: 100vh;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* 그림자 추가 */
 }
+.home-title {
+  color: #333;
+  margin-bottom: 20px;
+}
+.home-container {
+  flex-grow: 1; /* 남은 공간을 모두 차지 */
+  padding: 20px;
+  overflow-y: auto; /* 필요할 경우 스크롤 */
+  text-align: center;
+}
+
+.logo {
+  font-size: 32px;
+  color: black; /* 로고 글씨 색상을 검은색으로 */
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
 
 .menu {
   display: flex;
@@ -28,28 +39,28 @@
 }
 
 .menu-item {
-  padding: 20px 0;
+  padding: 10px 0;
   cursor: pointer;
-  color: #333;
+  color: black; /* 메뉴 아이템 글씨 색상을 검은색으로 */
   text-decoration: none;
-  border-bottom: 2px solid #ddd; /* 선 두께 증가 */
-  text-align: center; /* 중앙 정렬로 변경 */
-  font-weight: bold; /* 글꼴 두껍게 */
-}
-
-.menu-item:last-child {
-  border-bottom: none;
+  text-align: center;
+  font-size: 16px;
+  transition: background-color 0.2s;
 }
 
 .menu-item:hover {
-  background-color: #ccc; /* 배경색 변경 */
-  color: #000; /* 텍스트 색상 변경 */
+  background-color: #e6e6e6; /* 호버시 배경색 변경 */
 }
 
 .main {
   flex: 1;
   padding: 20px;
   background-color: #ffffff;
+}
+
+.main h1 {
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .search {
@@ -91,6 +102,18 @@
   border: none;
 }
 
+
+.video-content {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+video {
+  width: 100%;
+  height: auto;
+}
+
 .video-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -116,6 +139,43 @@
 
 .drag-drop {
   margin-bottom: 20px;
+  font-size: 16px;
+  color: #666;
+}
+input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.3s ease-in-out;
+}
+
+input[type="file"]:hover {
+  border-color: #bbb;
+}
+
+button {
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+button:focus {
+  outline: none;
+}
+
+p {
   font-size: 16px;
   color: #666;
 }

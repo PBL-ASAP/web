@@ -6,7 +6,7 @@ import Upload from './Upload';
 import './App.css';
 
 function App() {
-  const [videoFile, setVideoFile] = useState(null);
+  const [videoFiles, setVideoFiles] = useState([]);
 
   return (
     <Router>
@@ -20,9 +20,9 @@ function App() {
           </div>
         </div>
         <Routes>
-          <Route path="/" element={<Home videoFile={videoFile} />} />
+          <Route path="/" element={<Home videoFiles={videoFiles} />} />
           <Route path="/find-my-face" element={<FindMyFace />} />
-          <Route path="/upload" element={<Upload setVideoFile={setVideoFile} />} />
+          <Route path="/upload" element={<Upload setVideoFiles={setVideoFiles} />} />
         </Routes>
       </div>
     </Router>
@@ -30,4 +30,3 @@ function App() {
 }
 
 export default App;
-

@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Upload.css';
 
-function Upload({ setVideoFile }) {
+function Upload({ setVideoFiles }) {
   const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setVideoFile(file); // 부모 컴포넌트에 파일 상태 업데이트
-    }
+    // 파일 여러 개 선택 가능
+    setVideoFiles([...event.target.files]);
   };
 
   return (
-    <div>
-      <h1>Upload Your Video</h1>
-      <input type="file" accept="video/*" onChange={handleFileChange} />
-      <button onClick={() => console.log("File selected")}>Upload</button>
+    <div className="upload-container">
+      <h1>Upload Your Videos</h1>
+      <input type="file" accept="video/*" multiple onChange={handleFileChange} />
+      <button onClick={() => console.log("Files selected")}>Upload</button>
     </div>
   );
 }
