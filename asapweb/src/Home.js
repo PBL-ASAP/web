@@ -9,7 +9,7 @@ function Home({ videoFiles }) {
         {videoFiles.length > 0 ? (
           videoFiles.map((file, index) => (
             <video key={index} controls width="240" height="160">
-              <source src={URL.createObjectURL(file)} type="video/mp4" />
+              <source src={`http://localhost:8001/media/${file}`} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           ))

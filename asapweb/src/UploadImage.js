@@ -1,3 +1,4 @@
+/*업로드이미지*/
 import React, { useState } from 'react';
 
 function UploadImage({ onProcessImage }) {

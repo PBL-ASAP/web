@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './Home';
 import FindMyFace from './FindMyFace';
@@ -7,6 +7,19 @@ import './App.css';
 
 function App() {
   const [videoFiles, setVideoFiles] = useState([]);
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const response = await fetch('http://localhost:8001/api/videos/');
+        const result = await response.json();
+        setVideoFiles(result.video_files);
+      } catch (error) {
+        console.error('Error fetching videos:', error);
+      }
+    };
+    fetchVideos();
+  }, []);
 
   return (
     <Router>
