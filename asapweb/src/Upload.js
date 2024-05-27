@@ -15,6 +15,9 @@ const Upload = () => {
                 method: 'POST',
                 body: formData,
             });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
             const data = await response.json();
             if (data.status === 'success') {
                 setFaceKey(data.face_key);
@@ -38,6 +41,9 @@ const Upload = () => {
                 method: 'POST',
                 body: formData,
             });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
             const data = await response.json();
             console.log('Upload success:', data);
         } catch (error) {
