@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Upload = () => {
-    const getCookie = (name) => {
-        let cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
+    const [faceKey, setFaceKey] = useState(null);
+
+    const handleFaceUpload = async (event) => {
+        const files = event.target.files;
+        const formData = new FormData();
+        for (let i = 0; i < files.length; i++) {
+            formData.append('images', files[i]);
         }
-        return cookieValue;
+
+        try {
+            const response = await fetch('http://localhost:8001/upload_face_data/', {
+                method: 'POST',
+                body: formData,
+            });
+            const data = await response.json();
+            if (data.status === 'success') {
+                setFaceKey(data.face_key);
+            } else {
+                console.error('Error:', data.message);
+            }
+        } catch (error) {
+            console.error('Error uploading images:', error);
+        }
     };
 
     const handleVideoUpload = async (event) => {
@@ -23,56 +33,25 @@ const Upload = () => {
             formData.append('videos', files[i]);
         }
 
-        const csrfToken = getCookie('csrftoken');
-
         try {
             const response = await fetch('http://localhost:8001/upload_video_data/', {
                 method: 'POST',
-                headers: {
-                    'X-CSRFToken': csrfToken,
-                },
                 body: formData,
             });
-            if (!response.ok) {
-                throw new Error('Upload failed');
-            }
             const data = await response.json();
             console.log('Upload success:', data);
         } catch (error) {
-            console.error('Upload Error:', error);
-        }
-    };
-
-    const handleFaceUpload = async (event) => {
-        const files = event.target.files;
-        const formData = new FormData();
-        for (let i = 0; i < files.length; i++) {
-            formData.append('images', files[i]);
-        }
-
-        const csrfToken = getCookie('csrftoken');
-
-        try {
-          const response = await fetch('http://localhost:8001/upload_face_data/', {
-            method: 'POST',
-            headers: {
-                'X-CSRFToken': getCookie('csrftoken'),  // CSRF 토큰을 요청 헤더에 추가
-            },
-            body: formData,
-        });
-            const data = await response.json();
-            console.log('Face key:', data.face_key);
-        } catch (error) {
-            console.error('Error uploading images:', error);
+            console.error('Error uploading videos:', error);
         }
     };
 
     return (
         <div>
-            <h2>Upload Videos</h2>
-            <input type="file" multiple onChange={handleVideoUpload} />
             <h2>Upload Images</h2>
             <input type="file" multiple onChange={handleFaceUpload} />
+            {faceKey && <p>Face key: {faceKey}</p>}
+            <h2>Upload Videos</h2>
+            <input type="file" multiple onChange={handleVideoUpload} />
         </div>
     );
 };
